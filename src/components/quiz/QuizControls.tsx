@@ -13,7 +13,6 @@ const QuizControls = ({
     isLast,
     onSubmit,
     onNext,
-    onHint,
 }: QuizControlsProps) => {
     if (submitted) {
         return (
@@ -35,16 +34,13 @@ const QuizControls = ({
             >
                 Klaar!
             </Button>
-
-            {onHint && (
-                <Button
-                    variant="outline"
-                    onClick={onHint}
-                    className="bg-gray-200 text-black py-3 w-full rounded-lg font-semibold shadow"
-                >
-                    Geef mij een tip ...
-                </Button>
-            )}
+            <Button
+                variant="outline"
+                onClick={() => {}}
+                className="bg-gray-200 text-black py-3 w-full rounded-lg font-semibold shadow"
+            >
+                Geef mij een tip ...
+            </Button>
         </div>
     );
 };
