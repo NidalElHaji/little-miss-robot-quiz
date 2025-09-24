@@ -212,4 +212,3 @@ VITE_ENVIRONMENT=development
 -   [ ] **Project Management** - Jira/Trello board configured
 
 ---
-# little-miss-robot-quiz
