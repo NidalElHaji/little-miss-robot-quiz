@@ -35,7 +35,7 @@ src/
 │   │   ├── InformationCard.tsx
 │   │   ├── InformationControls.tsx
 │   │   └── informationDescription.tsx
-│   ├── layout/                # Layout components
+│   ├── layout/                 # Layout components
 │   |   ├── GameLayout.tsx
 │   |   ├── InformationContainer.tsx
 │   |   └── QuizContainer.tsx
@@ -198,7 +198,7 @@ open http://localhost:5173
 
 ```bash
 # .env
-VITE_QUIZ_API_URL=https://lab.lfwd.be/dev-test
+VITE_QUIZ_API_URL=XXXXXXXXXXXXXXX
 VITE_ENVIRONMENT=development
 ```
 
