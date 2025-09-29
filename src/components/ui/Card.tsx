@@ -1,6 +1,6 @@
 import React from "react";
 
-import { cn } from "../../config/tailwind";
+import { cn } from "../../services/tailwind";
 
 type CardProps = {
     children: React.ReactNode;
