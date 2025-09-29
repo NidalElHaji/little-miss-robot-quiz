@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useQuizData } from "../../hooks/useQuizData";
 import Card from "../ui/Card";
-import type { QuizQuestion } from "../../types/quiz";
+import { QuizStage, type QuizQuestion } from "../../types/quiz";
 import QuizPanel from "./QuizPanel";
 import QuizStart from "./QuizStart";
 import QuizEnd from "./QuizEnd";
@@ -11,7 +11,7 @@ type Stage = "start" | "quiz" | "end";
 
 const QuizCard = () => {
     const { quizData, loading, error } = useQuizData();
-    const [stage, setStage] = useState<Stage>("start");
+    const [stage, setStage] = useState<Stage>(QuizStage.START);
     const [current, setCurrent] = useState(0);
     const [score, setScore] = useState(0);
     const [results, setResults] = useState<
@@ -19,7 +19,7 @@ const QuizCard = () => {
     >([]);
 
     const handleStart = () => {
-        setStage("quiz");
+        setStage(QuizStage.QUIZ);
         setCurrent(0);
         setScore(0);
         setResults([]);
@@ -60,10 +60,12 @@ const QuizCard = () => {
                     ❌ Error: {error}
                 </div>
             )}
-            {quizData?.length && (
+            {quizData?.length && !loading && !error && (
                 <>
-                    {stage === "start" && <QuizStart onStart={handleStart} />}
-                    {stage === "quiz" && (
+                    {stage === QuizStage.START && (
+                        <QuizStart onStart={handleStart} />
+                    )}
+                    {stage === QuizStage.QUIZ && (
                         <QuizPanel
                             question={quizData[current]}
                             onNext={(correctCount: number) =>
@@ -72,7 +74,7 @@ const QuizCard = () => {
                             isLast={current + 1 === quizData.length}
                         />
                     )}
-                    {stage === "end" && (
+                    {stage === QuizStage.END && (
                         <QuizEnd
                             score={score}
                             total={quizData.length}

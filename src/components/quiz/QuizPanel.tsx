@@ -23,7 +23,10 @@ const QuizPanel = ({ question, onNext, isLast }: QuizPanelProps) => {
         }
     };
 
-    const { timeLeft, reset } = useTimer(question.time_limit_s, handleTimeout);
+    const { timeLeft, reset, stop } = useTimer(
+        question.time_limit_s,
+        handleTimeout,
+    );
 
     useEffect(() => {
         setSelected([]);
@@ -34,6 +37,7 @@ const QuizPanel = ({ question, onNext, isLast }: QuizPanelProps) => {
     const handleSubmit = () => {
         if (submitted) return;
         setSubmitted(true);
+        stop();
     };
 
     const toggleAnswer = (id: string) => {

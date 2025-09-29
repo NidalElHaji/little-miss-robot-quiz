@@ -2,14 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 
 export const useTimer = (initialTime: number, onTimeout?: () => void) => {
     const [timeLeft, setTimeLeft] = useState(initialTime);
-    const [isRunning, setIsRunning] = useState(true); // Auto-start timer
+    const [isRunning, setIsRunning] = useState(true);
 
     const start = useCallback(() => setIsRunning(true), []);
     const stop = useCallback(() => setIsRunning(false), []);
     const reset = useCallback(
         (newTime?: number) => {
             setTimeLeft(newTime ?? initialTime);
-            setIsRunning(true); // Auto-start after reset
+            setIsRunning(true);
         },
         [initialTime],
     );
